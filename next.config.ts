@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
+import config from "@/config/api";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: config.endpoints.ocr,
+        destination: `${config.baseUrl}${config.endpoints.ocr}`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
