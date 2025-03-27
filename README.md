@@ -111,4 +111,4 @@ npm run start
 
 ## 许可证
 
-[MIT](LICENSE)
+This tool is for personal use only. Please ensure you have the necessary rights to process the images.
