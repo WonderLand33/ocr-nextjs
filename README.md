@@ -59,6 +59,8 @@ npm run dev
 
 ## 构建部署
 
+### 传统部署
+
 1. 创建生产环境配置文件 `.env.production`：
 
 ```bash
@@ -76,6 +78,40 @@ npm run build
 ```bash
 npm run start
 ```
+
+### Docker部署
+
+项目支持使用Docker进行部署，提供了以下两种方式：
+
+#### 使用Docker Compose（推荐）
+
+1. 启动生产环境：
+
+```bash
+docker-compose up -d app
+```
+
+2. 启动开发环境：
+
+```bash
+docker-compose up dev
+```
+
+#### 使用Docker直接部署
+
+1. 构建Docker镜像：
+
+```bash
+docker build -t wx-ocr-demo .
+```
+
+2. 运行容器：
+
+```bash
+docker run -d -p 3000:3000 wx-ocr-demo
+```
+
+应用将在 http://localhost:3000 上运行。
 
 ## 技术栈
 
