@@ -166,7 +166,66 @@ export default function Home() {
               <TabsTrigger value="url">Image URL</TabsTrigger>
             </TabsList>
             <TabsContent value="upload" className="space-y-4">
-              <div className="grid w-full max-w-sm items-center gap-1.5">
+              <div
+                className="grid w-full items-center gap-1.5 p-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-primary transition-colors"
+                onPaste={async (e) => {
+                  e.preventDefault();
+                  const items = e.clipboardData.items;
+                  const imageItem = Array.from(items).find(item => item.type.startsWith('image/'));
+                  if (!imageItem) return;
+                  
+                  try {
+                    setLoading(true);
+                    setError('');
+                    setResult(null);
+                    setPreviewUrl('');
+                    const file = imageItem.getAsFile();
+                    if (!file) return;
+                    const base64 = await toBase64(file);
+                    setPreviewUrl(URL.createObjectURL(file));
+                    await processImage(base64);
+                  } catch (err) {
+                    setError('Error processing pasted image');
+                    console.error(err);
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.add('border-primary');
+                }}
+                onDragLeave={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove('border-primary');
+                }}
+                onDrop={async (e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove('border-primary');
+                  const file = e.dataTransfer.files?.[0];
+                  if (!file) return;
+                  try {
+                    setLoading(true);
+                    setError('');
+                    setResult(null);
+                    setPreviewUrl('');
+                    const base64 = await toBase64(file);
+                    setPreviewUrl(URL.createObjectURL(file));
+                    await processImage(base64);
+                  } catch (err) {
+                    setError('Error processing file');
+                    console.error(err);
+                  } finally {
+                    setLoading(false);
+                  }
+                }}
+              >
+                <div className="text-center">
+                  <p className="text-sm text-muted-foreground mb-2">支持以下方式上传图片：</p>
+                  <p className="text-sm text-muted-foreground">1. 点击下方按钮选择文件</p>
+                  <p className="text-sm text-muted-foreground">2. 拖拽图片到此区域</p>
+                  <p className="text-sm text-muted-foreground">3. 复制图片后粘贴到此区域</p>
+                </div>
                 <Label htmlFor="picture">Picture</Label>
                 <Input
                   id="picture"
