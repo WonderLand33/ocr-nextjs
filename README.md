@@ -2,6 +2,14 @@
 
 一个基于Next.js开发的图片OCR工具，可以快速从各种图片中提取文字内容。本项目采用现代化的技术栈，提供流畅的用户体验和高效的文字识别功能。
 
+## 快速部署
+
+点击下面的按钮一键部署到Vercel：
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo&env=API_BASE_URL&envDescription=API服务器地址配置&envLink=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo%23环境变量配置)
+
+> 注意：部署时需要在Vercel中配置环境变量`API_BASE_URL`，指向你的API服务器地址。
+
 ## 功能特点
 
 - 🖼️ 支持多种图片格式的文字识别
@@ -78,14 +86,6 @@ npm run build
 ```bash
 npm run start
 ```
-
-### Vercel部署
-
-点击下面的按钮一键部署到Vercel：
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo&env=API_BASE_URL&envDescription=API服务器地址配置&envLink=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo%23环境变量配置)
-
-> 注意：部署时需要在Vercel中配置环境变量`API_BASE_URL`，指向你的API服务器地址。
 
 ### Docker部署
 
