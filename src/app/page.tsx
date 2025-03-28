@@ -167,7 +167,7 @@ export default function Home() {
             </TabsList>
             <TabsContent value="upload" className="space-y-4">
               <div
-                className="grid w-full items-center gap-1.5 p-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-primary transition-colors"
+                className="grid w-full items-center justify-center gap-4 p-8 border-2 border-dashed border-gray-300 rounded-lg hover:border-primary transition-colors cursor-pointer"
                 onPaste={async (e) => {
                   e.preventDefault();
                   const items = e.clipboardData.items;
@@ -220,20 +220,23 @@ export default function Home() {
                   }
                 }}
               >
-                <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-2">支持以下方式上传图片：</p>
-                  <p className="text-sm text-muted-foreground">1. 点击下方按钮选择文件</p>
-                  <p className="text-sm text-muted-foreground">2. 拖拽图片到此区域</p>
-                  <p className="text-sm text-muted-foreground">3. 复制图片后粘贴到此区域</p>
+                <div className="text-center space-y-2">
+                  <p className="text-sm text-muted-foreground">Upload image using one of the following methods:</p>
+                  <p className="text-sm text-muted-foreground">1. Click the button below to select a file</p>
+                  <p className="text-sm text-muted-foreground">2. Drag and drop an image here</p>
+                  <p className="text-sm text-muted-foreground">3. Paste an image from clipboard</p>
                 </div>
-                <Label htmlFor="picture">Picture</Label>
-                <Input
-                  id="picture"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  disabled={loading}
-                />
+                <div className="flex flex-col items-center gap-2">
+                  <Label htmlFor="picture">Picture</Label>
+                  <Input
+                    id="picture"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    disabled={loading}
+                    className="w-full max-w-sm"
+                  />
+                </div>
               </div>
             </TabsContent>
             <TabsContent value="url" className="space-y-4">
