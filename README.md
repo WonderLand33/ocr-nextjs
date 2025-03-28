@@ -79,6 +79,14 @@ npm run build
 npm run start
 ```
 
+### Vercel部署
+
+点击下面的按钮一键部署到Vercel：
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo&env=API_BASE_URL&envDescription=API服务器地址配置&envLink=https%3A%2F%2Fgithub.com%2Fyour-username%2Fwx-ocr-demo%23环境变量配置)
+
+> 注意：部署时需要在Vercel中配置环境变量`API_BASE_URL`，指向你的API服务器地址。
+
 ### Docker部署
 
 项目支持使用Docker进行部署，提供了以下两种方式：
